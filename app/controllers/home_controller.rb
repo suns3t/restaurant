@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     end
     
     def menu
-        @sections = %w(Breakfast Lunch Dinner Supper)
+        @sections = %w(Breakfast Lunch Dinner Drinks)
         
         if params['section'].present?
             @food_items = FoodItem.where(section: params['section'])
