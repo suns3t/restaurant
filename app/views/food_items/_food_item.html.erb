@@ -1,0 +1,12 @@
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag(food_item.image_url_or_default) %>
+      <div class="caption">
+        <h3><%= food_item.name %></h3>
+        <p><%= food_item.description %></p>
+        <p>
+          <a href="#" class="btn btn-danger" role="button">Order</a> 
+        </p>
+      </div>
+    </div>
+  </div>
