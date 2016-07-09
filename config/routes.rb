@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
   resources :food_items
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,6 +14,9 @@ Rails.application.routes.draw do
 
   get 'contact_us' => 'home#contact_us'
   get 'menu' => 'home#menu'
+  get 'order' => 'home#order'
+  
+  resources :order_items, only: [:create, :update, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

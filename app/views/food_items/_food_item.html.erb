@@ -1,12 +1,50 @@
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <%= image_tag(food_item.image_url_or_default) %>
-      <div class="caption">
-        <h3><%= food_item.name %></h3>
-        <p><%= food_item.description %></p>
-        <p>
-          <a href="#" class="btn btn-danger" role="button">Order</a> 
-        </p>
+<div class="row">
+   <!--This part show food name and description-->
+  <div class="col-md-6">
+    <a type="button"  data-toggle="modal" data-target="#gridSystemModal<%= food_item.id %>">
+      <h3><%= food_item.name %> </h3>
+    </a>
+    <h5><small><%= food_item.description %></small></h5>
+  </div>
+   <!--This part show price of food-->
+  <div class="col-md-2">
+    <h5 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency food_item.price %></span></h5>
+  </div>
+  
+  <!--This part show button to add item to order-->
+  <div class="col-md-3">
+    <%= form_for order_item do |f| %>
+      <div class="input-group">
+        <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+        <div class="input-group-btn">
+          <%= f.hidden_field :food_item_id, value: food_item.id %>
+          <%= f.submit "Add to Order", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div id="gridSystemModal<%= food_item.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridModalLabel"><%= food_item.name %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid bd-example-row">
+            <div class="row">
+              <div class="col-md-8"><%= image_tag(food_item.image_url_or_default) %></div>
+              <div class="col-md-4">
+                <%= food_item.description %>
+                </br>
+                <b><%= number_to_currency(food_item.price) %></b>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+

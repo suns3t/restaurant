@@ -1,26 +1,33 @@
-<h1>This is Aha Restaurant Menu</h1>
-
-<div class="btn-group" role="group" aria-label="...">
-    <% @sections.each do |section| %>
-        <%= link_to section, menu_path(section: section), class: "btn btn-secondary" %>
-    <% end %>
+<h1 class="row" style="margin: auto; max-width: 500px">Aha Restaurant Menu</h1>
+<div class="row">
+  <!-- Group button for filter food section -->
+  <div class="btn-group" role="group" aria-label="Food Section">
+      <% @sections.each do |section| %>
+          <%= link_to section, menu_path(section: section), class: "btn btn-primary" %>
+      <% end %>
+  </div>
+  
+  <!-- Group button for filter food name in alphabet order -->
+  <div class="btn-group" role="group" aria-label="Food name">
+      <% @alphabet_orders.each do |key, value| %>
+          <%= link_to key, menu_path(order: value), class: "btn btn-info" %>
+      <% end %>
+  </div>
+  
+  <!-- Group button for filter food price in accend/descent order -->
+  <div class="btn-group" role="group" aria-label="Food name">
+      <% @price_orders.each do |key, value| %>
+          <%= link_to key, menu_path(price: value), class: "btn btn-danger" %>
+      <% end %>
+  </div>
 </div>
-
-<% @food_items.in_groups_of(3) do | food_group | %>
-    <div class="row">
-        <% food_group.compact.each do | food_item | %>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <%= image_tag(food_item.image_url_or_default) %>
-                    <div class="caption">
-                        <h3><%= food_item.name %></h3>
-                        <p><%= food_item.description %></p>
-                        <p>
-                          <a href="#" class="btn btn-danger" role="button">Order</a> 
-                        </p>
-                    </div>
-                </div>
-            </div>    
-        <% end %>
-    </div>
+</br>
+<% if @food_items.count > 0 %>
+  <div class="table table-hover">
+    <% @food_items.each do | food_item | %>
+      <%= render 'food_items/food_item', food_item: food_item, order_item: @order_item %>
+    <% end %>
+  </div>
+<% else %>
+  <i>We will update it soon!</i>
 <% end %>
