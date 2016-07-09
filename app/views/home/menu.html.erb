@@ -1,21 +1,22 @@
 <h1 class="row" style="margin: auto; max-width: 500px">Aha Restaurant Menu</h1>
+<br/>
 <div class="row">
   <!-- Group button for filter food section -->
-  <div class="btn-group" role="group" aria-label="Food Section">
+  <div class="col-xs-4 btn-group" role="group" aria-label="Food Section">
       <% @sections.each do |section| %>
           <%= link_to section, menu_path(section: section), class: "btn btn-primary" %>
       <% end %>
   </div>
   
   <!-- Group button for filter food name in alphabet order -->
-  <div class="btn-group" role="group" aria-label="Food name">
+  <div class="col-xs-4 btn-group" role="group" aria-label="Food name">
       <% @alphabet_orders.each do |key, value| %>
           <%= link_to key, menu_path(order: value), class: "btn btn-info" %>
       <% end %>
   </div>
   
   <!-- Group button for filter food price in accend/descent order -->
-  <div class="btn-group" role="group" aria-label="Food name">
+  <div class="col-xs-4 btn-group" role="group" aria-label="Food name">
       <% @price_orders.each do |key, value| %>
           <%= link_to key, menu_path(price: value), class: "btn btn-danger" %>
       <% end %>

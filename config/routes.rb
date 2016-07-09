@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   get 'order_items/create'
-
-  get 'order_items/update'
-
   get 'order_items/destroy'
 
   resources :food_items
@@ -15,8 +12,9 @@ Rails.application.routes.draw do
   get 'contact_us' => 'home#contact_us'
   get 'menu' => 'home#menu'
   get 'order' => 'home#order'
+  post 'order_submitted' => 'home#order_submitted'
   
-  resources :order_items, only: [:create, :update, :destroy]
+  resources :order_items, only: [:create, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

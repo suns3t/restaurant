@@ -19,19 +19,24 @@
   <% @order_items.each do |order_item| %>
     <%= render 'order_items/show', food_item: order_item.food_item, order_item: order_item %>
   <% end %>
-  <form id="order_submitted" action="/order_created">
+  
+  <%= form_tag("/order_submitted", method: "post") do %>
     <fieldset class="form-group">
-      <label for="name">Name</label>
-      <input class="form-control" id="name" placeholder="Enter your name">
+      <%= label_tag(:name, "Your name:") %>
+      <%= text_field_tag(:name, "" ,class: "form-control", required: true) %>
     </fieldset>
     <fieldset class="form-group">
-      <label for="phone_number">Phone Number</label>
-      <input class="form-control" id="phone_number" placeholder="Enter your phone number">
+      <%= label_tag(:phone, "Phone number:") %>
+      <%= text_field_tag(:phone, "", class: "form-control", required: true) %>
     </fieldset>
     <fieldset class="form-group">
-      <label for="exampleTextarea">Address</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+      <%= label_tag(:email, "Email address:") %>
+      <%= text_field_tag(:email, "", class: "form-control", required: true) %>
     </fieldset>
-    <button type="submit" class="btn btn-primary">Create your order</button>
-  </form>  
+    <fieldset class="form-group">
+      <%= label_tag(:address, "Address:") %>
+      <%= text_area_tag(:address, "", class: "form-control", required: true) %>
+    </fieldset>
+    <%= submit_tag("Submit the order") %>
+  <% end %>
 <% end %>

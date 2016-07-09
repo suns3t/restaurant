@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row food_item_row">
    <!--This part show food name and description-->
   <div class="col-md-6">
     <a type="button"  data-toggle="modal" data-target="#gridSystemModal<%= food_item.id %>">
@@ -8,7 +8,7 @@
   </div>
    <!--This part show price of food-->
   <div class="col-md-2">
-    <h5 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency food_item.price %></span></h5>
+    <h5 class="text-right"><span style="color: green"><%= number_to_currency food_item.price %></span></h5>
   </div>
   
   <!--This part show button to add item to order-->

@@ -9,13 +9,6 @@ class OrderItemsController < ApplicationController
     redirect_to :back 
   end
 
-  def update
-    @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    @order_item.update_attributes(order_itmes_params)
-    @order_items = @order.order_items
-  end
-
   def destroy
     @order = current_order
     @order_item = @order.order_items.find(params[:id])

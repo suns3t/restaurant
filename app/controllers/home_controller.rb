@@ -5,8 +5,8 @@ class HomeController < ApplicationController
     
     def menu
         @sections = %w(Breakfast Lunch Dinner Drinks)
-        @alphabet_orders = {'Sort from A to Z' => 'ASC', 'Sort from Z to A' => 'DESC'}
-        @price_orders = {'Sort from low to high' => 'ASC', 'Sort from high to low' => 'DESC'}
+        @alphabet_orders = {'A to Z' => 'ASC', 'Z to A' => 'DESC'}
+        @price_orders = {'Low to high' => 'ASC', 'High to low' => 'DESC'}
         @order_item = current_order.order_items.new
         
         if params['section'].present?
@@ -29,5 +29,16 @@ class HomeController < ApplicationController
     
     def order
         @order_items = current_order.order_items
+    end
+    
+    def order_submitted
+        # Display the order detail 
+        @user_info = params.permit(:name, :phone, :address)
+        @final_order = current_order
+        
+        #Clear current order
+        # session[:session_order_id] = nil
+        
+        # Send email confimation
     end
 end
