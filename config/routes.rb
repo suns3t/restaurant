@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   get 'order_items/create'
   get 'order_items/destroy'
 
-  resources :food_items
+  resources :food_items do
+    resources :reviews
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
