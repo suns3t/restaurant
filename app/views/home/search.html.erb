@@ -1,0 +1,16 @@
+<div class="card card-block text-xs-center">
+  <h3>Search Menu Result</h3>
+</div>
+
+<% if @food_items.count == 0 %>
+  <h4>Oops. Nothing found here</h4>
+  <p class="text-center">
+    That food is not in our menu yet.  Please <%= link_to "go back to menu", menu_path %> and order other food.
+  </p>
+<% else %>
+  <div class="table table-hover">
+    <% @food_items.each do | food_item | %>
+      <%= render 'food_items/food_item', food_item: food_item, order_item: @order_item %>
+    <% end %>
+  </div>
+<% end %>

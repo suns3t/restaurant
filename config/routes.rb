@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'menu' => 'home#menu'
   get 'order' => 'home#order'
   post 'order_submitted' => 'home#order_submitted'
+  post 'search' => "home#search"
   
   resources :order_items, only: [:create, :destroy]
   # Example of regular route:

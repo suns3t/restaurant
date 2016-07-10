@@ -1,14 +1,6 @@
-<% if !@order_item.nil? && @order_item.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-    <% @order_item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<h3 style="text-align: center">Order</h3>
+<div class="card card-block text-xs-center">
+  <h3>Order Summary</h3>
+</div>
 
 <% if @order_items.size == 0 %>
   <h4>Oops. Nothing here!</h4>
@@ -19,7 +11,9 @@
   <% @order_items.each do |order_item| %>
     <%= render 'order_items/show', food_item: order_item.food_item, order_item: order_item %>
   <% end %>
-  
+  <div class="text-xs-right">
+    <h4>Total: <%= current_order.subtotal %></h4>
+  </div>
   <%= form_tag("/order_submitted", method: "post") do %>
     <fieldset class="form-group">
       <%= label_tag(:name, "Your name:") %>

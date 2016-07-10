@@ -24,6 +24,12 @@ class HomeController < ApplicationController
     def contact_us
     end
     
+    def search
+        @order_item = current_order.order_items.new
+
+        # Search case insensitive
+        @food_items = FoodItem.where("LOWER(name) LIKE ?", "%#{params[:q].downcase}%")
+    end
     def order
         @order_items = current_order.order_items
     end
