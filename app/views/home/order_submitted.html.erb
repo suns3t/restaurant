@@ -1,3 +1,21 @@
-<h3 class="text-center">Thank <b><%= @user_info[:name] %></b> for ordering food at <b>Aha Restaurant</b></h3>
+<div class="card card-block text-xs-center">
+  <h3>Order Confirmed</h3>
+</div>
+<h5>Thank <b><%= @user_info[:name] %></b> for ordering food at <b>Aha Restaurant</b></h5>
 
-<p>Your order total cost is <%= @final_order.subtotal %></p>
+<p>Your order total cost is <%= number_to_currency @final_order.subtotal %></p>
+<p>Order created at <%= Time.now().strftime("%A, %B %d, %H:%M") %>, will be delivered to you as below information:</p>
+<% @final_order.order_items.each do | order_item | %>
+  <div class="row food_item_row">
+    <div class="col-xs-4">
+      <h4><%= order_item.food_item.name %></h4>
+    </div>
+    <div class="col-xs-4">
+      Quantity: <span><%= order_item.quantity.to_i %></span>
+    </div>
+    <div class="col-xs-4">
+      Total Price: <span style="color: green"><%= number_to_currency order_item.total_price %></span>
+    </div>
+  </div>
+<% end %>
+

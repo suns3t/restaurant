@@ -37,10 +37,10 @@ class HomeController < ApplicationController
     def order_submitted
         # Display the order detail 
         @user_info = params.permit(:name, :phone, :address, :email)
-        @final_order = current_order
+        @final_order ||= current_order
         
         #Clear current order
-        # session[:session_order_id] = nil
+        session[:session_order_id] = nil
 
         # Tell the UserMailer to send a welcome email after save
         UserMailer.confirmation_order(@user_info).deliver_now
