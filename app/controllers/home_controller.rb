@@ -42,10 +42,15 @@ class HomeController < ApplicationController
         #Clear current order
         session[:session_order_id] = nil
 
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.confirmation_order(@user_info).deliver_now
-        
-        # Notify
-        flash[:notice] = "A confirmation email is sent"
+        begin
+            # Tell the UserMailer to send a welcome email after save
+            UserMailer.confirmation_order(@user_info).deliver_now
+            
+            # Notify
+            flash[:notice] = "A confirmation email is sent"
+        rescue Exception => e
+            flash[:notice] = "Something goes wrong. A confirmation email is not sent"
+        end
+            
     end
 end
