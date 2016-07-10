@@ -6,7 +6,7 @@ Submitted by: **Huy Ngoc Hoang**
 
 Time spent: **XX** hours spent in total
 
-URL: **heroku-app-url**
+URL: **https://infinite-headland-41337.herokuapp.com/**
 
 ## User Stories
 
@@ -54,11 +54,15 @@ The following **known issues**:
 
 * List bugs or things that don't work yet
 
+* [ ] Bootstrap modal does not popup on "All Food" section
+* [ ] Email was not sent, maybe the config on Mailer was wrong.
+* [ ] Confirmation page does not load after deployed to Heroku, may caused by email not sent function.
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](path-to-your-GIF-file)
+![Video Walkthrough](restaurant-demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -68,7 +72,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name]
+    Copyright [2016] [Hoang Huy]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
