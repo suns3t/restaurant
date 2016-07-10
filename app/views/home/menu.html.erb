@@ -1,34 +1,61 @@
 <h1 class="row" style="margin: auto; max-width: 500px">Aha Restaurant Menu</h1>
 <br/>
-<div class="row">
-  <!-- Group button for filter food section -->
-  <div class="col-xs-4 btn-group" role="group" aria-label="Food Section">
-      <% @sections.each do |section| %>
-          <%= link_to section, menu_path(section: section), class: "btn btn-primary" %>
-      <% end %>
-  </div>
-  
+
+ <div class="row" style="margin: auto;">
   <!-- Group button for filter food name in alphabet order -->
-  <div class="col-xs-4 btn-group" role="group" aria-label="Food name">
+  <div class="col-xs-6 btn-group" role="group" aria-label="Food name">
       <% @alphabet_orders.each do |key, value| %>
-          <%= link_to key, menu_path(order: value), class: "btn btn-info" %>
+          <%= link_to key, menu_path(order: value), class: "btn btn-secondary"%>
       <% end %>
-  </div>
+  </div> 
   
   <!-- Group button for filter food price in accend/descent order -->
-  <div class="col-xs-4 btn-group" role="group" aria-label="Food name">
+  <div class="col-xs-6 btn-group" role="group" aria-label="Food name">
       <% @price_orders.each do |key, value| %>
-          <%= link_to key, menu_path(price: value), class: "btn btn-danger" %>
+          <%= link_to key, menu_path(price: value), class: "btn btn-secondary" %>
       <% end %>
   </div>
 </div>
-</br>
-<% if @food_items.count > 0 %>
-  <div class="table table-hover">
-    <% @food_items.each do | food_item | %>
-      <%= render 'food_items/food_item', food_item: food_item, order_item: @order_item %>
+<hr>
+<div role="tabpanel">
+  <ul class="nav nav-tabs" id="categoriesTab" role="tablist">
+    <li class="nav-item col-md-2 ">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#All" role="tab" aria-controls="home" aria-expanded="true">All Foods</a>
+    </li>
+    <% @sections.each do | section | %>
+    <li class="nav-item col-md-2 ">
+      <a class="nav-link" id="home-tab" data-toggle="tab" href="#<%= section %>" role="tab" aria-controls="home" aria-expanded="true"><%= section %></a>
+    </li>
     <% end %>
+  </ul>
+  <div class="tab-content" id="categoryContent">
+    <% @sections.each do | section | %>
+      <div role="tabpanel" class="tab-pane fade in" id="<%= section %>">
+        <!-- Show food list in this section -->
+        <!-- Single button -->
+        </br>
+          <% if @food_items.where(section: section).count > 0 %>
+            <div class="table table-hover">
+              <% @food_items.where(section: section).each do | food_item | %>
+                <%= render 'food_items/food_item', food_item: food_item, order_item: @order_item %>
+              <% end %>
+            </div>
+          <% else %>
+            <i>We will update it soon!</i>
+          <% end %>     
+      </div>
+    <% end %>
+    <br>
+    <div role="tabpanel" class="tab-pane fade in active" id="All">
+      <% if @food_items.count > 0 %>
+        <div class="table table-hover">
+          <% @food_items.each do | food_item | %>
+            <%= render 'food_items/food_item', food_item: food_item, order_item: @order_item %>
+          <% end %>
+        </div>
+      <% else %>
+        <i>We will update it soon!</i>
+      <% end %> 
   </div>
-<% else %>
-  <i>We will update it soon!</i>
-<% end %>
+</div>
+

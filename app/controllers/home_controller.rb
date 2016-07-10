@@ -9,11 +9,8 @@ class HomeController < ApplicationController
         @price_orders = {'Low to high' => 'ASC', 'High to low' => 'DESC'}
         @order_item = current_order.order_items.new
         
-        if params['section'].present?
-            @food_items = FoodItem.where(section: params['section'])
-        else
-            @food_items = FoodItem.all
-        end
+
+        @food_items = FoodItem.all
         
         if params['order'].present?
             @food_items = @food_items.order('name ' + params['order'])
