@@ -54,9 +54,9 @@ The following **known issues**:
 
 * List bugs or things that don't work yet
 
-* [ ] Bootstrap modal does not popup on "All Food" section
+* [x] Bootstrap modal does not popup on "All Food" section - FIXED
 * [ ] Email was not sent, maybe the config on Mailer was wrong.
-* [ ] Confirmation page does not load after deployed to Heroku, may caused by email not sent function.
+* [x] Confirmation page does not load after deployed to Heroku, may caused by email not sent function - FIXED with a Rescue block.
 
 ## Video Walkthrough
 
