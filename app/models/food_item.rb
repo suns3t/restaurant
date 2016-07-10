@@ -8,7 +8,7 @@ class FoodItem < ActiveRecord::Base
         if image_url.present?
             image_url
         else
-            "http://loremflickr.com/320/240/#{CGI.escape name}"
+            "https://loremflickr.com/320/240/#{CGI.escape name}"
         end
     end
     
