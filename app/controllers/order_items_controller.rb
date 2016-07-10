@@ -6,7 +6,7 @@ class OrderItemsController < ApplicationController
     @order.save
     session[:session_order_id] = @order.id
     flash[:notice] = "Your order is created!"
-    redirect_to :back 
+    redirect_to order_path 
   end
 
   def destroy
@@ -15,7 +15,7 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @order_items = @order.order_items
     flash[:notice] = "It is removed from your order"
-    redirect_to :back
+    redirect_to order_path
   end
   
   private
