@@ -6,7 +6,7 @@ Submitted by: **Huy Ngoc Hoang**
 
 Time spent: **XX** hours spent in total
 
-URL: **https://infinite-headland-41337.herokuapp.com/**
+URL: **https://aharestaurant.herokuapp.com/**
 
 ## User Stories
 
